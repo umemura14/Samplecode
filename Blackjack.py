@@ -13,7 +13,7 @@ class Card():  # カード一枚の情報クラス
         return f"{self.suit} {self.number}"
 
 
-class Deck():
+class Deck(): #デッキクラス
 
     def __init__(self):
         suits = ["♠", "♥", "♣", "♦"]
@@ -39,24 +39,24 @@ class Deck():
             for number in numbers:
                 self.cards.append(Card(suit, number))
 
-    def deal(self):
+    def deal(self): #カードを引く関数
         return self.cards.pop(0)
 
-    def shuffle(self):
+    def shuffle(self): #カードをシャッフルする関数
         random.shuffle(self.cards)
 
 
-class Hand():
+class Hand(): #手札クラス
 
     def __init__(self, dealer=False):  # dealer=Falseを基準にしている。Falseでなければplayear
         self.dealer = dealer
         self.cards = []
         self.total = 0
 
-    def add_card(self, card):
+    def add_card(self, card): #カードの追加関数
         self.cards.append(card)
 
-    def calc_value(self):
+    def calc_value(self): #数値の計算
         self.value = 0
         ace = False
         for card in self.cards:
@@ -89,7 +89,7 @@ class Hand():
         print()
 
 
-class Game():
+class Game(): #ゲームの判定クラス
 
     def check_winner(self, player_hand, dealer_hand, game_over=False):
         if not game_over:
